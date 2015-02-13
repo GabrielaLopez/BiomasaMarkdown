@@ -1,0 +1,132 @@
+---
+title: "BiomasAnalysisV3"
+author: "Gabriela Lopez"
+date: "Friday, February 13, 2015"
+output: html_document
+---
+**Requierements for using the ForestPlots.net Report template** 
+
+(This section can be deleted once you're ready to publish your report)
+Sofware requirements
+
+This is a template to produce an html document that reports above-ground biomass (AGB), stem density, wood mass density estimates and frequency and number of species by Family.
+You will need to install R and RStudio in your computer to modify and run the template.
+
+The template is an R Markdown docuemnt that can be modified by ForestPlots.net users. For more details on using R Markdown see <http://rmarkdown.rstudio.com>. 
+Clicking **Knit** button will generate a the docoument.
+
+The template needs the following packages: a) BiomasaFP (package for estimating biomass and other forest parameters from data donwloaded from ForestPlots.net ); 
+
+
+**Data requirements**
+You need to download 3 files from ForestPlots.net:  a) Individuals csv file from the Advanced Search, b) Wood density file  from the query library and c) Plot View metadata file from the query library. The 3 files should correspond to the same Plot Views. The 3 files should be saved in the same working directory.
+
+**Instructions**
+Text in italics should be updated according to the dataset you're using. 
+
+**Introduction**
+
+This document summarizes Forest Inventory Data collected by the *RAINFOR network (www.rainfor.org)*.  The plots (plotviews) in this report conform to the following criteria: *multiple census plots*, *minimum diameter of 100mm*, *plot area greater than 0.2 ha*.
+
+This document reports: a) Aboveground biomass (AGB), b) Basal Area (BA), c) wood density and d) frequency and number of species by Family for each Plot View.
+
+-----
+**Data processing**
+
+The data was downloaded from ForestPlots.net (Lopez-Gonzalez et al., 2011; Lopez-Gonzalez et al., 2009) on *date*. The plots included in this report can be found in the table below. 
+
+Note: click on a column header to sort the rows.
+
+**Table 1. Plots included in this report**
+
+```{r dataretrieving, cache=TRUE, results='asis', echo=FALSE}
+#reading amd merging datasets
+library (BiomasaFP)
+
+# reads, cleans and merges the Census data file, metadata file and wd file.
+mergedCensus <- mergefp("TestDataset.csv","Metadata10nov.csv","wd10nov.csv" )
+Table1 <- SummaryPlotviews(mergedCensus)
+
+```
+
+
+
+```{r setOptions, message=FALSE, echo=FALSE}
+library(googleVis)
+op <- options(gvis.plot.tag='chart')
+
+```
+
+
+```{r ,results='asis', echo=FALSE}
+Tbl1<- gvisTable (Table1)
+plot(Tbl1, options= list (page='enable',height='automatic', width='automatic'))
+
+```
+
+
+The plot location is shown in the map in Figure 1.
+
+**Figure 1. Map of Plot Location**
+
+```{r, results='asis', echo=FALSE}
+Table1$LatLong<-  paste(Table1$LatitudeDecimal,Table1$LongitudeDecimal, sep=":")
+M <- gvisMap(Table1, locationvar = 'LatLong',  options= list (enableScrollWheel=TRUE, useMapTypeControl=TRUE, width =600, height=400, dataMode="markers"))
+plot(M)
+
+```
+
+**Results**
+Table 2 shows the Aboveground Biomass estimated using Chave (2005) Moist forest equation with heigt and wood density as parameters.Height was estimated using regional parameters  for a Weibull model (Feldpaush, 2011). 
+
+**Table 2 Aboveground Biomass by PlotViewID and Census**
+```{r, results='asis',echo=FALSE}
+library(BiomasaFP)
+Table2 <- SummaryAGB(mergedCensus, AGBChv05MH)
+
+Tbl2 <- gvisTable (Table2,options= list (page='enable',height='automatic', width='automatic'))
+plot(Tbl2)
+```
+
+
+Aboveground biomass change was estimated as the difference in AGB between the first and last census, divided by the time elapsed (Figure 3). In Figure 3 biomass change is indicated by colour and the size of the marker represents the AGB weighted mean.
+
+**Figure 3. Map of Change**
+
+Note: This type of map includes an option for selecting region. In the configuration options of the following you can find the region codes: link https://developers.google.com/chart/interactive/docs/gallery/geomap
+```{r, results='asis', echo=FALSE}
+library(BiomasaFP)
+Table3 <- AGBch(mergedCensus,AGBChv05MH)
+Table3$AGBChangeyr <- Table3$AGBChange/(Table3$Last.Census.Mean.Date-Table3$Census.Mean.Date)
+Table4 <- MeanWtAGB(mergedCensus,AGBChv05MH)
+Table4a <- Table4[, c('PlotViewID', 'AGBWeightedMean')]
+Table5 <- merge (Table3, Table4a, by = "PlotViewID")
+
+
+suppressPackageStartupMessages(library(googleVis))
+op <- options(gvis.plot.tag='chart')
+
+Table5$LatLong<-  paste(Table5$LatitudeDecimal,Table5$LongitudeDecimal, sep=":")
+M <- gvisGeoChart(Table5, locationvar = 'LatLong', sizevar='AGBWeightedMean', colorvar='AGBChangeyr' ,  options= list (enableScrollWheel=TRUE, useMapTypeControl=TRUE, width =600, height=400, region="005", dataMode="markers"))
+plot(M)
+```
+
+**References**
+
+Chave J, Coomes DA, Jansen S, Lewis SL, Swenson NG, Zanne AE. 2009. Towards a worldwide wood economics spectrum. Ecology Letters 12(4): 351-366. http://dx.doi.org/10.1111/j.1461-0248.2009.01285.x
+
+Chave C, Andalo S, Brown, et al. 2005. Tree allometry and improved estimation of carbon stocks and balance in tropical forests. Oecologia 145 (1):87-99. doi:10.1007/s00442-005-0100-x.
+
+Chave J, Rejou-Mechain M, Burquez A et al. 2014. Improved allometric models to estimate the aboveground biomass of tropical trees. Global Change Biology 20: 3177-3190. doi: 10.1111/gcb.12629
+
+Feldpausch TR, Banin L, Phillips OL, Baker TR, Lewis SL et al. 2011. Height-diameter allometry of tropical forest trees. Biogeosciences 8 (5):1081-1106. doi:10.5194/bg-8-1081-2011.
+
+Lopez-Gonzalez  G. (2014). BiomasaFP: Estimates Biomass for data dowloaded from ForestPlots.net. R package version 1.0.
+
+Lopez-Gonzalez, G., Lewis, S.L., Burkitt, M. and Phillips, O.L. (2011). ForestPlots.net: a web application and research tool to manage and analyse tropical forest plot data. Journal of Vegetation Science 22: 610–613. doi: 10.1111/j.1654-1103.2011.01312.x
+
+Lopez-Gonzalez, G., Lewis, S.L., Burkitt, M., Baker T.R. and Phillips, O.L. (2009). ForestPlots.net Database. www.forestplots.net. Date of extraction *[dd,mm,yy]*.
+
+R Core Team (2014). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL http://www.R-project.org/.
+
+Zanne AE, Lopez-Gonzalez G, Coomes DA, Ilic J, Jansen S, Lewis SL, Miller RB, Swenson NG, Wiemann MC, Chave J. 2009. Data from: Towards a worldwide wood economics spectrum. Dryad Digital Repository. http://dx.doi.org/10.5061/dryad.234
