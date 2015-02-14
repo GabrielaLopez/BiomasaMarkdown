@@ -47,14 +47,14 @@ Note: click on a column header to sort the rows.
 
 
 <!-- Table generated in R 3.1.2 by googleVis 0.5.8 package -->
-<!-- Sat Feb 14 00:10:20 2015 -->
+<!-- Sat Feb 14 00:32:01 2015 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataTableID1eb07b581e40 () {
+function gvisDataTableID1eb02901d44 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -142,13 +142,13 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartTableID1eb07b581e40() {
-var data = gvisDataTableID1eb07b581e40();
+function drawChartTableID1eb02901d44() {
+var data = gvisDataTableID1eb02901d44();
 var options = {};
 options["allowHtml"] = true;
 
     var chart = new google.visualization.Table(
-    document.getElementById('TableID1eb07b581e40')
+    document.getElementById('TableID1eb02901d44')
     );
     chart.draw(data,options);
     
@@ -172,9 +172,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartTableID1eb07b581e40);
+callbacks.push(drawChartTableID1eb02901d44);
 })();
-function displayChartTableID1eb07b581e40() {
+function displayChartTableID1eb02901d44() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -198,11 +198,11 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartTableID1eb07b581e40"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartTableID1eb02901d44"></script>
  
 <!-- divChart -->
   
-<div id="TableID1eb07b581e40" 
+<div id="TableID1eb02901d44" 
   style="width: 500; height: automatic;">
 </div>
 
@@ -212,14 +212,14 @@ The plot location is shown in the map in Figure 1.
 **Figure 1. Map of Plot Location**
 
 <!-- Map generated in R 3.1.2 by googleVis 0.5.8 package -->
-<!-- Sat Feb 14 00:10:20 2015 -->
+<!-- Sat Feb 14 00:32:01 2015 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataMapID1eb021a166cf () {
+function gvisDataMapID1eb014d498a () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -267,8 +267,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartMapID1eb021a166cf() {
-var data = gvisDataMapID1eb021a166cf();
+function drawChartMapID1eb014d498a() {
+var data = gvisDataMapID1eb014d498a();
 var options = {};
 options["showTip"] = true;
 options["enableScrollWheel"] = true;
@@ -278,7 +278,7 @@ options["height"] =    400;
 options["dataMode"] = "markers";
 
     var chart = new google.visualization.Map(
-    document.getElementById('MapID1eb021a166cf')
+    document.getElementById('MapID1eb014d498a')
     );
     chart.draw(data,options);
     
@@ -302,9 +302,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartMapID1eb021a166cf);
+callbacks.push(drawChartMapID1eb014d498a);
 })();
-function displayChartMapID1eb021a166cf() {
+function displayChartMapID1eb014d498a() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -328,11 +328,11 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMapID1eb021a166cf"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMapID1eb014d498a"></script>
  
 <!-- divChart -->
   
-<div id="MapID1eb021a166cf" 
+<div id="MapID1eb014d498a" 
   style="width: 600; height: 400;">
 </div>
 
@@ -341,14 +341,14 @@ Table 2 shows the Aboveground Biomass estimated using Chave (2005) Moist forest 
 
 **Table 2 Aboveground Biomass by PlotViewID and Census**
 <!-- Table generated in R 3.1.2 by googleVis 0.5.8 package -->
-<!-- Sat Feb 14 00:10:22 2015 -->
+<!-- Sat Feb 14 00:32:03 2015 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataTableID1eb07d3a1e1f () {
+function gvisDataTableID1eb072277b88 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -1160,14 +1160,14 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartTableID1eb07d3a1e1f() {
-var data = gvisDataTableID1eb07d3a1e1f();
+function drawChartTableID1eb072277b88() {
+var data = gvisDataTableID1eb072277b88();
 var options = {};
 options["allowHtml"] = true;
 options["page"] = "enable";
 
     var chart = new google.visualization.Table(
-    document.getElementById('TableID1eb07d3a1e1f')
+    document.getElementById('TableID1eb072277b88')
     );
     chart.draw(data,options);
     
@@ -1191,9 +1191,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartTableID1eb07d3a1e1f);
+callbacks.push(drawChartTableID1eb072277b88);
 })();
-function displayChartTableID1eb07d3a1e1f() {
+function displayChartTableID1eb072277b88() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -1217,11 +1217,11 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartTableID1eb07d3a1e1f"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartTableID1eb072277b88"></script>
  
 <!-- divChart -->
   
-<div id="TableID1eb07d3a1e1f" 
+<div id="TableID1eb072277b88" 
   style="width: automatic; height: automatic;">
 </div>
 
@@ -1232,14 +1232,14 @@ Aboveground biomass change was estimated as the difference in AGB between the fi
 
 Note: This type of map includes an option for selecting region. In the configuration options of the following you can find the region codes: link https://developers.google.com/chart/interactive/docs/gallery/geomap
 <!-- GeoChart generated in R 3.1.2 by googleVis 0.5.8 package -->
-<!-- Sat Feb 14 00:10:25 2015 -->
+<!-- Sat Feb 14 00:32:05 2015 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataGeoChartID1eb01ffd6dc3 () {
+function gvisDataGeoChartID1eb02a1ce3c () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -1295,8 +1295,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartGeoChartID1eb01ffd6dc3() {
-var data = gvisDataGeoChartID1eb01ffd6dc3();
+function drawChartGeoChartID1eb02a1ce3c() {
+var data = gvisDataGeoChartID1eb02a1ce3c();
 var options = {};
 options["width"] =    600;
 options["height"] =    400;
@@ -1306,7 +1306,7 @@ options["region"] = "005";
 options["dataMode"] = "markers";
 
     var chart = new google.visualization.GeoChart(
-    document.getElementById('GeoChartID1eb01ffd6dc3')
+    document.getElementById('GeoChartID1eb02a1ce3c')
     );
     chart.draw(data,options);
     
@@ -1330,9 +1330,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartGeoChartID1eb01ffd6dc3);
+callbacks.push(drawChartGeoChartID1eb02a1ce3c);
 })();
-function displayChartGeoChartID1eb01ffd6dc3() {
+function displayChartGeoChartID1eb02a1ce3c() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -1356,11 +1356,11 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartGeoChartID1eb01ffd6dc3"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartGeoChartID1eb02a1ce3c"></script>
  
 <!-- divChart -->
   
-<div id="GeoChartID1eb01ffd6dc3" 
+<div id="GeoChartID1eb02a1ce3c" 
   style="width: 600; height: 400;">
 </div>
 

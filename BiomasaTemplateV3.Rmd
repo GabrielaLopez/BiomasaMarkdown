@@ -80,7 +80,7 @@ plot(M)
 Table 2 shows the Aboveground Biomass estimated using Chave (2005) Moist forest equation with heigt and wood density as parameters.Height was estimated using regional parameters  for a Weibull model (Feldpaush, 2011). 
 
 **Table 2 Aboveground Biomass by PlotViewID and Census**
-```{r, results='asis',echo=FALSE}
+```{r, fig.height=4, results='asis',echo=FALSE, fig.path='figure/'}
 library(BiomasaFP)
 Table2 <- SummaryAGB(mergedCensus, AGBChv05MH)
 
