@@ -1,209 +1,56 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+---
+title: "BiomasAnalysisV3"
+author: "Gabriela Lopez"
+date: "Friday, February 13, 2015"
+output: html_document
+---
+**Requierements for using the ForestPlots.net Report template** 
 
-<title></title>
+(This section can be deleted once you're ready to publish your report)
+Sofware requirements
 
-<script type="text/javascript">
-window.onload = function() {
-  var imgs = document.getElementsByTagName('img'), i, img;
-  for (i = 0; i < imgs.length; i++) {
-    img = imgs[i];
-    // center an image if it is the only element of its parent
-    if (img.parentElement.childElementCount === 1)
-      img.parentElement.style.textAlign = 'center';
-  }
-};
-</script>
+This is a template to produce an html document that reports above-ground biomass (AGB), stem density, wood mass density estimates and frequency and number of species by Family.
+You will need to install R and RStudio in your computer to modify and run the template.
 
+The template is an R Markdown docuemnt that can be modified by ForestPlots.net users. For more details on using R Markdown see <http://rmarkdown.rstudio.com>. 
+Clicking **Knit** button will generate a the docoument.
 
+The template needs the following packages: a) BiomasaFP (package for estimating biomass and other forest parameters from data donwloaded from ForestPlots.net ); 
 
 
+**Data requirements**
+You need to download 3 files from ForestPlots.net:  a) Individuals csv file from the Advanced Search, b) Wood density file  from the query library and c) Plot View metadata file from the query library. The 3 files should correspond to the same Plot Views. The 3 files should be saved in the same working directory.
 
-<style type="text/css">
-body, td {
-   font-family: sans-serif;
-   background-color: white;
-   font-size: 13px;
-}
+**Instructions**
+Text in italics should be updated according to the dataset you're using. 
 
-body {
-  max-width: 800px;
-  margin: auto;
-  padding: 1em;
-  line-height: 20px;
-}
+**Introduction**
 
-tt, code, pre {
-   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
-}
+This document summarizes Forest Inventory Data collected by the *RAINFOR network (www.rainfor.org)*.  The plots (plotviews) in this report conform to the following criteria: *multiple census plots*, *minimum diameter of 100mm*, *plot area greater than 0.2 ha*.
 
-h1 {
-   font-size:2.2em;
-}
+This document reports: a) Aboveground biomass (AGB), b) Basal Area (BA), c) wood density and d) frequency and number of species by Family for each Plot View.
 
-h2 {
-   font-size:1.8em;
-}
+-----
+**Data processing**
 
-h3 {
-   font-size:1.4em;
-}
+The data was downloaded from ForestPlots.net (Lopez-Gonzalez et al., 2011; Lopez-Gonzalez et al., 2009) on *date*. The plots included in this report can be found in the table below. 
 
-h4 {
-   font-size:1.0em;
-}
+Note: click on a column header to sort the rows.
 
-h5 {
-   font-size:0.9em;
-}
-
-h6 {
-   font-size:0.8em;
-}
-
-a:visited {
-   color: rgb(50%, 0%, 50%);
-}
-
-pre, img {
-  max-width: 100%;
-}
-pre {
-  overflow-x: auto;
-}
-pre code {
-   display: block; padding: 0.5em;
-}
-
-code {
-  font-size: 92%;
-  border: 1px solid #ccc;
-}
-
-code[class] {
-  background-color: #F8F8F8;
-}
-
-table, td, th {
-  border: none;
-}
-
-blockquote {
-   color:#666666;
-   margin:0;
-   padding-left: 1em;
-   border-left: 0.5em #EEE solid;
-}
-
-hr {
-   height: 0px;
-   border-bottom: none;
-   border-top-width: thin;
-   border-top-style: dotted;
-   border-top-color: #999999;
-}
-
-@media print {
-   * {
-      background: transparent !important;
-      color: black !important;
-      filter:none !important;
-      -ms-filter: none !important;
-   }
-
-   body {
-      font-size:12pt;
-      max-width:100%;
-   }
-
-   a, a:visited {
-      text-decoration: underline;
-   }
-
-   hr {
-      visibility: hidden;
-      page-break-before: always;
-   }
-
-   pre, blockquote {
-      padding-right: 1em;
-      page-break-inside: avoid;
-   }
-
-   tr, img {
-      page-break-inside: avoid;
-   }
-
-   img {
-      max-width: 100% !important;
-   }
-
-   @page :left {
-      margin: 15mm 20mm 15mm 10mm;
-   }
-
-   @page :right {
-      margin: 15mm 10mm 15mm 20mm;
-   }
-
-   p, h2, h3 {
-      orphans: 3; widows: 3;
-   }
-
-   h2, h3 {
-      page-break-after: avoid;
-   }
-}
-</style>
+**Table 1. Plots included in this report**
 
 
 
-</head>
 
-<body>
-<p><strong>Requierements for using the ForestPlots.net Report template</strong> </p>
 
-<p>(This section can be deleted once you&#39;re ready to publish your report)
-Sofware requirements</p>
 
-<p>This is a template to produce an html document that reports above-ground biomass (AGB), stem density, wood mass density estimates and frequency and number of species by Family.
-You will need to install R and RStudio in your computer to modify and run the template.</p>
 
-<p>The template is an R Markdown docuemnt that can be modified by ForestPlots.net users. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com">http://rmarkdown.rstudio.com</a>. 
-Clicking <strong>Knit</strong> button will generate a the docoument.</p>
-
-<p>The template needs the following packages: a) BiomasaFP (package for estimating biomass and other forest parameters from data donwloaded from ForestPlots.net ); </p>
-
-<p><strong>Data requirements</strong>
-You need to download 3 files from ForestPlots.net:  a) Individuals csv file from the Advanced Search, b) Wood density file  from the query library and c) Plot View metadata file from the query library. The 3 files should correspond to the same Plot Views. The 3 files should be saved in the same working directory.</p>
-
-<p><strong>Instructions</strong>
-Text in italics should be updated according to the dataset you&#39;re using. </p>
-
-<p><strong>Introduction</strong></p>
-
-<p>This document summarizes Forest Inventory Data collected by the <em>RAINFOR network (<a href="http://www.rainfor.org">www.rainfor.org</a>)</em>.  The plots (plotviews) in this report conform to the following criteria: <em>multiple census plots</em>, <em>minimum diameter of 100mm</em>, <em>plot area greater than 0.2 ha</em>.</p>
-
-<p>This document reports: a) Aboveground biomass (AGB), b) Basal Area (BA), c) wood density and d) frequency and number of species by Family for each Plot View.</p>
-
-<hr/>
-
-<p><strong>Data processing</strong></p>
-
-<p>The data was downloaded from ForestPlots.net (Lopez-Gonzalez et al., 2011; Lopez-Gonzalez et al., 2009) on <em>date</em>. The plots included in this report can be found in the table below. </p>
-
-<p>Note: click on a column header to sort the rows.</p>
-
-<p><strong>Table 1. Plots included in this report</strong></p>
 
 <!-- Table generated in R 3.1.2 by googleVis 0.5.8 package -->
-
 <!-- Sat Feb 14 00:10:20 2015 -->
 
-<!-- jsHeader -->
 
+<!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
@@ -350,28 +197,25 @@ callbacks.shift()();
 // jsFooter
 </script>
  
-
 <!-- jsChart -->  
-
 <script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartTableID1eb07b581e40"></script>
  
-
 <!-- divChart -->
-
+  
 <div id="TableID1eb07b581e40" 
   style="width: 500; height: automatic;">
 </div>
 
-<p>The plot location is shown in the map in Figure 1.</p>
 
-<p><strong>Figure 1. Map of Plot Location</strong></p>
+The plot location is shown in the map in Figure 1.
+
+**Figure 1. Map of Plot Location**
 
 <!-- Map generated in R 3.1.2 by googleVis 0.5.8 package -->
-
 <!-- Sat Feb 14 00:10:20 2015 -->
 
-<!-- jsHeader -->
 
+<!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
@@ -483,29 +327,24 @@ callbacks.shift()();
 // jsFooter
 </script>
  
-
 <!-- jsChart -->  
-
 <script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMapID1eb021a166cf"></script>
  
-
 <!-- divChart -->
-
+  
 <div id="MapID1eb021a166cf" 
   style="width: 600; height: 400;">
 </div>
 
-<p><strong>Results</strong>
-Table 2 shows the Aboveground Biomass estimated using Chave (2005) Moist forest equation with heigt and wood density as parameters.Height was estimated using regional parameters  for a Weibull model (Feldpaush, 2011). </p>
+**Results**
+Table 2 shows the Aboveground Biomass estimated using Chave (2005) Moist forest equation with heigt and wood density as parameters.Height was estimated using regional parameters  for a Weibull model (Feldpaush, 2011). 
 
-<p><strong>Table 2 Aboveground Biomass by PlotViewID and Census</strong></p>
-
+**Table 2 Aboveground Biomass by PlotViewID and Census**
 <!-- Table generated in R 3.1.2 by googleVis 0.5.8 package -->
-
 <!-- Sat Feb 14 00:10:22 2015 -->
 
-<!-- jsHeader -->
 
+<!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
@@ -1377,30 +1216,26 @@ callbacks.shift()();
 // jsFooter
 </script>
  
-
 <!-- jsChart -->  
-
 <script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartTableID1eb07d3a1e1f"></script>
  
-
 <!-- divChart -->
-
+  
 <div id="TableID1eb07d3a1e1f" 
   style="width: automatic; height: automatic;">
 </div>
 
-<p>Aboveground biomass change was estimated as the difference in AGB between the first and last census, divided by the time elapsed (Figure 3). In Figure 3 biomass change is indicated by colour and the size of the marker represents the AGB weighted mean.</p>
 
-<p><strong>Figure 3. Map of Change</strong></p>
+Aboveground biomass change was estimated as the difference in AGB between the first and last census, divided by the time elapsed (Figure 3). In Figure 3 biomass change is indicated by colour and the size of the marker represents the AGB weighted mean.
 
-<p>Note: This type of map includes an option for selecting region. In the configuration options of the following you can find the region codes: link <a href="https://developers.google.com/chart/interactive/docs/gallery/geomap">https://developers.google.com/chart/interactive/docs/gallery/geomap</a></p>
+**Figure 3. Map of Change**
 
+Note: This type of map includes an option for selecting region. In the configuration options of the following you can find the region codes: link https://developers.google.com/chart/interactive/docs/gallery/geomap
 <!-- GeoChart generated in R 3.1.2 by googleVis 0.5.8 package -->
-
 <!-- Sat Feb 14 00:10:25 2015 -->
 
-<!-- jsHeader -->
 
+<!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
@@ -1520,38 +1355,31 @@ callbacks.shift()();
 // jsFooter
 </script>
  
-
 <!-- jsChart -->  
-
 <script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartGeoChartID1eb01ffd6dc3"></script>
  
-
 <!-- divChart -->
-
+  
 <div id="GeoChartID1eb01ffd6dc3" 
   style="width: 600; height: 400;">
 </div>
 
-<p><strong>References</strong></p>
+**References**
 
-<p>Chave J, Coomes DA, Jansen S, Lewis SL, Swenson NG, Zanne AE. 2009. Towards a worldwide wood economics spectrum. Ecology Letters 12(4): 351-366. <a href="http://dx.doi.org/10.1111/j.1461-0248.2009.01285.x">http://dx.doi.org/10.1111/j.1461-0248.2009.01285.x</a></p>
+Chave J, Coomes DA, Jansen S, Lewis SL, Swenson NG, Zanne AE. 2009. Towards a worldwide wood economics spectrum. Ecology Letters 12(4): 351-366. http://dx.doi.org/10.1111/j.1461-0248.2009.01285.x
 
-<p>Chave C, Andalo S, Brown, et al. 2005. Tree allometry and improved estimation of carbon stocks and balance in tropical forests. Oecologia 145 (1):87-99. doi:10.1007/s00442-005-0100-x.</p>
+Chave C, Andalo S, Brown, et al. 2005. Tree allometry and improved estimation of carbon stocks and balance in tropical forests. Oecologia 145 (1):87-99. doi:10.1007/s00442-005-0100-x.
 
-<p>Chave J, Rejou-Mechain M, Burquez A et al. 2014. Improved allometric models to estimate the aboveground biomass of tropical trees. Global Change Biology 20: 3177-3190. doi: 10.1111/gcb.12629</p>
+Chave J, Rejou-Mechain M, Burquez A et al. 2014. Improved allometric models to estimate the aboveground biomass of tropical trees. Global Change Biology 20: 3177-3190. doi: 10.1111/gcb.12629
 
-<p>Feldpausch TR, Banin L, Phillips OL, Baker TR, Lewis SL et al. 2011. Height-diameter allometry of tropical forest trees. Biogeosciences 8 (5):1081-1106. doi:10.5194/bg-8-1081-2011.</p>
+Feldpausch TR, Banin L, Phillips OL, Baker TR, Lewis SL et al. 2011. Height-diameter allometry of tropical forest trees. Biogeosciences 8 (5):1081-1106. doi:10.5194/bg-8-1081-2011.
 
-<p>Lopez-Gonzalez  G. (2014). BiomasaFP: Estimates Biomass for data dowloaded from ForestPlots.net. R package version 1.0.</p>
+Lopez-Gonzalez  G. (2014). BiomasaFP: Estimates Biomass for data dowloaded from ForestPlots.net. R package version 1.0.
 
-<p>Lopez-Gonzalez, G., Lewis, S.L., Burkitt, M. and Phillips, O.L. (2011). ForestPlots.net: a web application and research tool to manage and analyse tropical forest plot data. Journal of Vegetation Science 22: 610â€“613. doi: 10.1111/j.1654-1103.2011.01312.x</p>
+Lopez-Gonzalez, G., Lewis, S.L., Burkitt, M. and Phillips, O.L. (2011). ForestPlots.net: a web application and research tool to manage and analyse tropical forest plot data. Journal of Vegetation Science 22: 610–613. doi: 10.1111/j.1654-1103.2011.01312.x
 
-<p>Lopez-Gonzalez, G., Lewis, S.L., Burkitt, M., Baker T.R. and Phillips, O.L. (2009). ForestPlots.net Database. <a href="http://www.forestplots.net">www.forestplots.net</a>. Date of extraction <em>[dd,mm,yy]</em>.</p>
+Lopez-Gonzalez, G., Lewis, S.L., Burkitt, M., Baker T.R. and Phillips, O.L. (2009). ForestPlots.net Database. www.forestplots.net. Date of extraction *[dd,mm,yy]*.
 
-<p>R Core Team (2014). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL <a href="http://www.R-project.org/">http://www.R-project.org/</a>.</p>
+R Core Team (2014). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL http://www.R-project.org/.
 
-<p>Zanne AE, Lopez-Gonzalez G, Coomes DA, Ilic J, Jansen S, Lewis SL, Miller RB, Swenson NG, Wiemann MC, Chave J. 2009. Data from: Towards a worldwide wood economics spectrum. Dryad Digital Repository. <a href="http://dx.doi.org/10.5061/dryad.234">http://dx.doi.org/10.5061/dryad.234</a></p>
-
-</body>
-
-</html>
+Zanne AE, Lopez-Gonzalez G, Coomes DA, Ilic J, Jansen S, Lewis SL, Miller RB, Swenson NG, Wiemann MC, Chave J. 2009. Data from: Towards a worldwide wood economics spectrum. Dryad Digital Repository. http://dx.doi.org/10.5061/dryad.234
