@@ -1,28 +1,40 @@
 ---
 title: "BiomasAnalysisV3"
-author: "Gabriela Lopez"
-date: "Friday, February 13, 2015"
+author: "Gabriela Lopez and Tim Baker"
+date: "Thursday, February 19, 2015"
 output: html_document
 ---
-**Requierements for using the ForestPlots.net Report template** 
+**Requirements for using the ForestPlots.net Report template** 
 
 (This section can be deleted once you're ready to publish your report)
-Sofware requirements
 
-This is a template to produce an html document that reports above-ground biomass (AGB), stem density, wood mass density estimates and frequency and number of species by Family.
-You will need to install R and RStudio in your computer to modify and run the template.
+This template is an R Markdown document that uses data from ForestPlots.net to create a user-friendly report about the latest results from your plots.
 
-The template is an R Markdown docuemnt that can be modified by ForestPlots.net users. For more details on using R Markdown see <http://rmarkdown.rstudio.com>. 
-Clicking **Knit** button will generate a the docoument.
+It produces an html or pdf document that reports above-ground biomass (AGB), stem density, wood mass density estimates and the frequency and number of species by family for your selected plots. It will also map the location of your plots, and visualise the rates of biomass change among the plots.
 
-The template needs the following packages: a) BiomasaFP (package for estimating biomass and other forest parameters from data donwloaded from ForestPlots.net ); 
+**Software requirements**
 
+You will need to install R (version 3.1.2 or later) and RStudio <http://www.rstudio.com/> in your computer to modify and run the template.
 
-**Data requirements**
-You need to download 3 files from ForestPlots.net:  a) Individuals csv file from the Advanced Search, b) Wood density file  from the query library and c) Plot View metadata file from the query library. The 3 files should correspond to the same Plot Views. The 3 files should be saved in the same working directory.
+In addition to a suite of packages that you will be asked to install when you first run an R Markdown file, you will also need to download the BiomasaFP package for estimating biomass and other forest parameters from data downloaded from ForestPlots.net. This can be obtained from <http://www.ForestPlots.net>.
+
+Data requirements
+
+To use this template, you need to download three data files from ForestPlots.net that use your plot data:
+
+<br>a) The Individuals csv file from the Advanced Search,</br>
+<br>b) The Wood density file from the query library, </br>
+<br>c) The Plot View metadata file from the query library.</br>
+
+The three files should correspond to the same Plot Views and should be saved in the same working directory, together with the BiomasaFP package.
 
 **Instructions**
-Text in italics should be updated according to the dataset you're using. 
+
+Once you have installed the programmes and downloaded your data, this template should be ready to run. Clicking the **Knit HTML** button will generate the document. To create a pdf document, select the **Knit PDF** option. To create a pdf file you will in addition need to have a TeX/LaTeX system on your computer;  you can download a suitable system from <http://www.miktex.org>; select the complete, rather than the basic system.
+
+The text in blue below and in italics in the final document can be updated according to the dataset you're using. Indeed, if you are familiar with R, you can customize any aspect of the template to suit the output that you would like to obtain. 
+
+For more details on using R Markdown see <http://rmarkdown.rstudio.com>. 
 
 **Introduction**
 
@@ -43,29 +55,22 @@ Note: click on a column header to sort the rows.
 #reading amd merging datasets
 library (BiomasaFP)
 
-# reads, cleans and merges the Census data file, metadata file and wd file.
-mergedCensus <- mergefp("TestDataset.csv","Metadata10nov.csv","wd10nov.csv" )
+# edits final table to make it user-friendly
+
+mergedCensus <- mergefp('TestDataset.csv','Metadata10nov.csv','wd10nov.csv' )
 Table1 <- SummaryPlotviews(mergedCensus)
+Table1friendly <- Table1[-grep('PlotViewID',colnames(Table1))]
+  colnames(Table1friendly )<-c("Country","Plot","Latitude","Longitude","First census","Last census","Number of censuses")
 
-```
-
-
-
-```{r setOptions, message=FALSE, echo=FALSE}
-library(googleVis)
+suppressPackageStartupMessages(library(googleVis))
 op <- options(gvis.plot.tag='chart')
 
-```
-
-
-```{r ,results='asis', echo=FALSE}
-Tbl1<- gvisTable (Table1)
+Tbl1 <- gvisTable (Table1friendly, formats= list ('Latitude'='#.###', 'Longitude'= '#.###', 'First census' ='#.##', 'Last census' ='#.##'))
 plot(Tbl1, options= list (page='enable',height='automatic', width='automatic'))
 
 ```
 
-
-The plot location is shown in the map in Figure 1.
+The plot location is shown in Figure 1.
 
 **Figure 1. Map of Plot Location**
 
@@ -77,7 +82,7 @@ plot(M)
 ```
 
 **Results**
-Table 2 shows the Aboveground Biomass estimated using Chave (2005) Moist forest equation with heigt and wood density as parameters.Height was estimated using regional parameters  for a Weibull model (Feldpaush, 2011). 
+Table 2 shows the aboveground biomass estimated using the Chave (2005) moist forest equation with height and wood density as parameters. Height was estimated from tree diameter depending on the region where the plot is located and using the region-specific parameters for a Weibull model of the height/diameter relationship (Feldpaush et al., 2011). 
 
 **Table 2 Aboveground Biomass by PlotViewID and Census**
 ```{r, fig.height=4, results='asis',echo=FALSE, fig.path='figure/'}
@@ -88,13 +93,18 @@ Tbl2 <- gvisTable (Table2,options= list (page='enable',height='automatic', width
 plot(Tbl2)
 ```
 
-
-Aboveground biomass change was estimated as the difference in AGB between the first and last census, divided by the time elapsed (Figure 3). In Figure 3 biomass change is indicated by colour and the size of the marker represents the AGB weighted mean.
+Aboveground biomass change was estimated as the difference in AGB between the first and last census, divided by the time elapsed (Figure 3). In Figure 3, the rate of biomass change over time is indicated by colour and the size of the marker represents the AGB weighted mean.
 
 **Figure 3. Map of Change**
 
+<<<<<<< HEAD
 Note: This type of map includes an option for selecting region. In the configuration options of the following you can find the region codes: link https://developers.google.com/chart/interactive/docs/gallery/geomap
 ```{r, results='asis', echo=FALSE, fig.path=}
+=======
+Note: This type of map includes an option for selecting just the region or country of interest, by using the appropriate code in the region option of the gvisGeoChart command. In the configuration options you can find the region codes: link https://developers.google.com/chart/interactive/docs/gallery/geomap
+
+```{r, results='asis', echo=FALSE}
+>>>>>>> origin/master
 library(BiomasaFP)
 Table3 <- AGBch(mergedCensus,AGBChv05MH)
 Table3$AGBChangeyr <- Table3$AGBChange/(Table3$Last.Census.Mean.Date-Table3$Census.Mean.Date)
@@ -115,7 +125,7 @@ plot(M)
 
 Chave J, Coomes DA, Jansen S, Lewis SL, Swenson NG, Zanne AE. 2009. Towards a worldwide wood economics spectrum. Ecology Letters 12(4): 351-366. http://dx.doi.org/10.1111/j.1461-0248.2009.01285.x
 
-Chave C, Andalo S, Brown, et al. 2005. Tree allometry and improved estimation of carbon stocks and balance in tropical forests. Oecologia 145 (1):87-99. doi:10.1007/s00442-005-0100-x.
+Chave J, Andalo S, Brown, et al. 2005. Tree allometry and improved estimation of carbon stocks and balance in tropical forests. Oecologia 145 (1):87-99. doi:10.1007/s00442-005-0100-x.
 
 Chave J, Rejou-Mechain M, Burquez A et al. 2014. Improved allometric models to estimate the aboveground biomass of tropical trees. Global Change Biology 20: 3177-3190. doi: 10.1111/gcb.12629
 
