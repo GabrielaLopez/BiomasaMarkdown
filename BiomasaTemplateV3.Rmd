@@ -1,28 +1,40 @@
 ---
 title: "BiomasAnalysisV3"
-author: "Gabriela Lopez"
-date: "Friday, February 13, 2015"
+author: "Gabriela Lopez and Tim Baker"
+date: "Thursday, February 19, 2015"
 output: html_document
 ---
-**Requierements for using the ForestPlots.net Report template** 
+**Requirements for using the ForestPlots.net Report template** 
 
 (This section can be deleted once you're ready to publish your report)
-Sofware requirements
 
-This is a template to produce an html document that reports above-ground biomass (AGB), stem density, wood mass density estimates and frequency and number of species by Family.
-You will need to install R and RStudio in your computer to modify and run the template.
+This template is an R Markdown document that uses data from ForestPlots.net to create a user-friendly report about the latest results from your plots.
 
-The template is an R Markdown docuemnt that can be modified by ForestPlots.net users. For more details on using R Markdown see <http://rmarkdown.rstudio.com>. 
-Clicking **Knit** button will generate a the docoument.
+It produces an html or pdf document that reports above-ground biomass (AGB), stem density, wood mass density estimates and the frequency and number of species by family for your selected plots. It will also map the location of your plots, and visualise the rates of biomass change among the plots.
 
-The template needs the following packages: a) BiomasaFP (package for estimating biomass and other forest parameters from data donwloaded from ForestPlots.net ); 
+**Software requirements**
 
+You will need to install R (version 3.1.2 or later) and RStudio <http://www.rstudio.com/> in your computer to modify and run the template.
 
-**Data requirements**
-You need to download 3 files from ForestPlots.net:  a) Individuals csv file from the Advanced Search, b) Wood density file  from the query library and c) Plot View metadata file from the query library. The 3 files should correspond to the same Plot Views. The 3 files should be saved in the same working directory.
+In addition to a suite of packages that you will be asked to install when you first run an R Markdown file, you will also need to download the BiomasaFP package for estimating biomass and other forest parameters from data downloaded from ForestPlots.net. This can be obtained from <http://www.ForestPlots.net>.
+
+Data requirements
+
+To use this template, you need to download three data files from ForestPlots.net based on your plots: 
+
+a) The Individuals csv file from the Advanced Search, 
+b) The Wood density file from the query library 
+c) The Plot View metadata file from the query library. 
+
+The three files should correspond to the same Plot Views and should be saved in the same working directory, together with the BiomasaFP package.
 
 **Instructions**
-Text in italics should be updated according to the dataset you're using. 
+
+Once you have installed the programmes and downloaded your data, this template should be ready to run. Clicking the **Knit HTML** button will generate the document. To create a pdf document, select the **Knit PDF** option. To create a pdf file you will in addition need to have a TeX/LaTeX system on your computer;  you can download a suitable system from <http://www.miktex.org>; select the complete, rather than the basic system.
+
+The text in blue below and in italics in the final document can be updated according to the dataset you're using. Indeed, if you are familiar with R, you can customize any aspect of the template to suit the output that you would like to obtain. 
+
+For more details on using R Markdown see <http://rmarkdown.rstudio.com>. 
 
 **Introduction**
 
