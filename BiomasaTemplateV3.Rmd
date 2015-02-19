@@ -20,11 +20,11 @@ In addition to a suite of packages that you will be asked to install when you fi
 
 Data requirements
 
-To use this template, you need to download three data files from ForestPlots.net based on your plots: 
+To use this template, you need to download three data files from ForestPlots.net that use your plot data:
 
-a) The Individuals csv file from the Advanced Search, 
-b) The Wood density file from the query library 
-c) The Plot View metadata file from the query library. 
+<br>a) The Individuals csv file from the Advanced Search,</br>
+<br>b) The Wood density file from the query library, </br>
+<br>c) The Plot View metadata file from the query library.</br>
 
 The three files should correspond to the same Plot Views and should be saved in the same working directory, together with the BiomasaFP package.
 
@@ -55,29 +55,22 @@ Note: click on a column header to sort the rows.
 #reading amd merging datasets
 library (BiomasaFP)
 
-# reads, cleans and merges the Census data file, metadata file and wd file.
-mergedCensus <- mergefp("TestDataset.csv","Metadata10nov.csv","wd10nov.csv" )
+# edits final table to make it user-friendly
+
+mergedCensus <- mergefp('TestDataset.csv','Metadata10nov.csv','wd10nov.csv' )
 Table1 <- SummaryPlotviews(mergedCensus)
+Table1friendly <- Table1[-grep('PlotViewID',colnames(Table1))]
+  colnames(Table1friendly )<-c("Country","Plot","Latitude","Longitude","First census","Last census","Number of censuses")
 
-```
-
-
-
-```{r setOptions, message=FALSE, echo=FALSE}
-library(googleVis)
+suppressPackageStartupMessages(library(googleVis))
 op <- options(gvis.plot.tag='chart')
 
-```
-
-
-```{r ,results='asis', echo=FALSE}
-Tbl1<- gvisTable (Table1)
+Tbl1 <- gvisTable (Table1friendly, formats= list ('Latitude'='#.###', 'Longitude'= '#.###', 'First census' ='#.##', 'Last census' ='#.##'))
 plot(Tbl1, options= list (page='enable',height='automatic', width='automatic'))
 
 ```
 
-
-The plot location is shown in the map in Figure 1.
+The plot location is shown in Figure 1.
 
 **Figure 1. Map of Plot Location**
 
@@ -89,7 +82,7 @@ plot(M)
 ```
 
 **Results**
-Table 2 shows the Aboveground Biomass estimated using Chave (2005) Moist forest equation with heigt and wood density as parameters.Height was estimated using regional parameters  for a Weibull model (Feldpaush, 2011). 
+Table 2 shows the aboveground biomass estimated using the Chave (2005) moist forest equation with height and wood density as parameters. Height was estimated from tree diameter depending on the region where the plot is located and using the region-specific parameters for a Weibull model of the height/diameter relationship (Feldpaush et al., 2011). 
 
 **Table 2 Aboveground Biomass by PlotViewID and Census**
 ```{r, fig.height=4, results='asis',echo=FALSE, fig.path='figure/'}
@@ -100,12 +93,12 @@ Tbl2 <- gvisTable (Table2,options= list (page='enable',height='automatic', width
 plot(Tbl2)
 ```
 
-
-Aboveground biomass change was estimated as the difference in AGB between the first and last census, divided by the time elapsed (Figure 3). In Figure 3 biomass change is indicated by colour and the size of the marker represents the AGB weighted mean.
+Aboveground biomass change was estimated as the difference in AGB between the first and last census, divided by the time elapsed (Figure 3). In Figure 3, the rate of biomass change over time is indicated by colour and the size of the marker represents the AGB weighted mean.
 
 **Figure 3. Map of Change**
 
-Note: This type of map includes an option for selecting region. In the configuration options of the following you can find the region codes: link https://developers.google.com/chart/interactive/docs/gallery/geomap
+Note: This type of map includes an option for selecting just the region or country of interest, by using the appropriate code in the region option of the gvisGeoChart command. In the configuration options you can find the region codes: link https://developers.google.com/chart/interactive/docs/gallery/geomap
+
 ```{r, results='asis', echo=FALSE}
 library(BiomasaFP)
 Table3 <- AGBch(mergedCensus,AGBChv05MH)
@@ -127,7 +120,7 @@ plot(M)
 
 Chave J, Coomes DA, Jansen S, Lewis SL, Swenson NG, Zanne AE. 2009. Towards a worldwide wood economics spectrum. Ecology Letters 12(4): 351-366. http://dx.doi.org/10.1111/j.1461-0248.2009.01285.x
 
-Chave C, Andalo S, Brown, et al. 2005. Tree allometry and improved estimation of carbon stocks and balance in tropical forests. Oecologia 145 (1):87-99. doi:10.1007/s00442-005-0100-x.
+Chave J, Andalo S, Brown, et al. 2005. Tree allometry and improved estimation of carbon stocks and balance in tropical forests. Oecologia 145 (1):87-99. doi:10.1007/s00442-005-0100-x.
 
 Chave J, Rejou-Mechain M, Burquez A et al. 2014. Improved allometric models to estimate the aboveground biomass of tropical trees. Global Change Biology 20: 3177-3190. doi: 10.1111/gcb.12629
 
