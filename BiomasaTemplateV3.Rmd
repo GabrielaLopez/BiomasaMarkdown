@@ -62,10 +62,13 @@ Table1 <- SummaryPlotviews(mergedCensus)
 Table1friendly <- Table1[-grep('PlotViewID',colnames(Table1))]
   colnames(Table1friendly )<-c("Country","Plot","Latitude","Longitude","First census","Last census","Number of censuses")
 
+```{r setOptions, message=FALSE, echo=FALSE}
 suppressPackageStartupMessages(library(googleVis))
-op <- options(gvis.plot.tag='chart')
 
-Tbl1 <- gvisTable (Table1friendly, formats= list ('Latitude'='#.###', 'Longitude'= '#.###', 'First census' ='#.##', 'Last census' ='#.##'))
+op <- options(gvis.plot.tag='chart')
+```{r ,results='asis', echo=FALSE}
+#Tbl1 <- gvisTable (Table1, formats= list ('Latitude'='#.###', 'Longitude'= '#.###', 'First census' ='#.##', 'Last census' ='#.##'))
+Tbl1<- gvisTable (Table1)
 plot(Tbl1, options= list (page='enable',height='automatic', width='automatic'))
 
 ```
@@ -85,7 +88,7 @@ plot(M)
 Table 2 shows the aboveground biomass estimated using the Chave (2005) moist forest equation with height and wood density as parameters. Height was estimated from tree diameter depending on the region where the plot is located and using the region-specific parameters for a Weibull model of the height/diameter relationship (Feldpaush et al., 2011). 
 
 **Table 2 Aboveground Biomass by PlotViewID and Census**
-```{r, fig.height=4, results='asis',echo=FALSE, fig.path='figure/'}
+```{r, fig.height=4, results='asis',echo=FALSE}
 library(BiomasaFP)
 Table2 <- SummaryAGB(mergedCensus, AGBChv05MH)
 
@@ -97,14 +100,9 @@ Aboveground biomass change was estimated as the difference in AGB between the fi
 
 **Figure 3. Map of Change**
 
-<<<<<<< HEAD
-Note: This type of map includes an option for selecting region. In the configuration options of the following you can find the region codes: link https://developers.google.com/chart/interactive/docs/gallery/geomap
-```{r, results='asis', echo=FALSE, fig.path=}
-=======
 Note: This type of map includes an option for selecting just the region or country of interest, by using the appropriate code in the region option of the gvisGeoChart command. In the configuration options you can find the region codes: link https://developers.google.com/chart/interactive/docs/gallery/geomap
 
 ```{r, results='asis', echo=FALSE}
->>>>>>> origin/master
 library(BiomasaFP)
 Table3 <- AGBch(mergedCensus,AGBChv05MH)
 Table3$AGBChangeyr <- Table3$AGBChange/(Table3$Last.Census.Mean.Date-Table3$Census.Mean.Date)
