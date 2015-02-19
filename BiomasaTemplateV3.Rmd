@@ -94,7 +94,7 @@ Aboveground biomass change was estimated as the difference in AGB between the fi
 **Figure 3. Map of Change**
 
 Note: This type of map includes an option for selecting region. In the configuration options of the following you can find the region codes: link https://developers.google.com/chart/interactive/docs/gallery/geomap
-```{r, results='asis', echo=FALSE}
+```{r, results='asis', echo=FALSE, fig.path=}
 library(BiomasaFP)
 Table3 <- AGBch(mergedCensus,AGBChv05MH)
 Table3$AGBChangeyr <- Table3$AGBChange/(Table3$Last.Census.Mean.Date-Table3$Census.Mean.Date)
