@@ -39,9 +39,7 @@ For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
 **Introduction**
 
-This document summarises forest inventory data collected by the *RAINFOR network (www.rainfor.org)*.  The plots (plotviews) in this report conform to the following criteria: *multiple census plots*, *minimum diameter of 100mm*, *plot area greater than 0.2 ha*.
-
-**Data processing**
+This document summarises forest inventory data collected by the *RAINFOR network (www.rainfor.org)*.  The plots in this report conform to the following criteria: *multiple census plots*, *minimum diameter of 100mm*, *plot area greater than 0.2 ha*.
 
 The data was downloaded from ForestPlots.net (Lopez-Gonzalez et al., 2011; Lopez-Gonzalez et al., 2009) on *date*. The plots included in this report can be found in the table below. 
 
@@ -82,7 +80,7 @@ plot(M)
 
 ```
 <br></br>
-<br>**Results**</br>
+
 Table 2 shows estimates of aboveground biomass for each plot estimated using the Chave et al. (2005) moist forest equation with height and wood density as parameters. Height was estimated for each tree from its diameter using a Weibull model of the height/diameter relationship with parameters that according to the region where the plot is located (Feldpaush et al. 2011). 
 
 **Table 2** Aboveground biomass (Mg/ha) and stem number for each plot, by census. Plot area (ha) also shown.
@@ -100,7 +98,7 @@ plot(Tbl2)
 
 Aboveground biomass change was estimated as the difference in AGB between the first and last census, divided by the time elapsed (Figure 3). In Figure 3 the rate of biomass change over time is indicated by colour, and the size of the marker represents the AGB weighted mean.
 
-**Figure 3. Map of the rate of change of aboveground biomass (Mg/ha/a)**
+**Figure 3.** Map of the rate of change of aboveground biomass (Mg/ha per year)
 
 Note: This type of map includes an option for displaying the specific region or country of interest, by using the appropriate code in the 'region' option of the gvisGeoChart command. In the configuration options you can find the region codes: https://developers.google.com/chart/interactive/docs/gallery/geomap
 
