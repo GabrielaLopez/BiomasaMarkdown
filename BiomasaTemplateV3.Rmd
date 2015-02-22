@@ -30,7 +30,7 @@ The three files should correspond to the same Plot Views and should be saved in 
 
 **Instructions**
 
-Once you have installed the programmes and downloaded your data, this template should be ready to run. Clicking the **Knit HTML** button will generate the document. To create a pdf document, select the **Knit PDF** option. To create a pdf file you will in addition need to have a TeX/LaTeX system on your computer;  you can download a suitable system from <http://www.miktex.org>; select the complete, rather than the basic system.
+Once you have installed the programmes and downloaded your data, this template should be ready to run. Clicking the **Knit HTML** button will generate the document. To create a pdf document, select the **Knit PDF** option.
 
 The text in blue below and in italics in the final document can be updated according to the dataset you're using. Indeed, if you are familiar with R, you can customize any aspect of the template to suit the output that you would like to obtain. 
 
