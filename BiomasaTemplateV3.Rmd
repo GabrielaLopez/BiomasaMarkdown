@@ -21,9 +21,9 @@ In addition to a suite of packages that you will be asked to install when you fi
 Data requirements
 
 To use this template, you need to download three data files from ForestPlots.net that use your plot data:
-a) The Individuals csv file from the Advanced Search
-b) The Wood density file from the query library
-c) The Plot View metadata file from the query library
+<br>a) The Individuals csv file from the Advanced Search</br>
+<br>b) The Wood density file from the query library</br>
+<br>c) The Plot View metadata file from the query library</br>
 
 The three files should correspond to the same Plot Views and should be saved in the same working directory, together with the BiomasaFP package and this R Markdown document.
 
