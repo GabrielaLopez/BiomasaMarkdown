@@ -1,5 +1,5 @@
 ---
-title: "BiomasaAnalysisV3"
+title: "Biomass Analysis"
 author: "Gabriela Lopez and Tim Baker"
 date: "Sunday, February 22, 2015"
 output: html_document
