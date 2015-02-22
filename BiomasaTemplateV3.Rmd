@@ -21,9 +21,9 @@ In addition to a suite of packages that you will be asked to install when you fi
 Data requirements
 
 To use this template, you need to download three data files from ForestPlots.net that use your plot data:
-<br>a) The Individuals csv file from the Advanced Search,</br>
-<br>b) The Wood density file from the query library, </br>
-<br>c) The Plot View metadata file from the query library.</br>
+a) The Individuals csv file from the Advanced Search
+b) The Wood density file from the query library
+c) The Plot View metadata file from the query library
 
 The three files should correspond to the same Plot Views and should be saved in the same working directory, together with the BiomasaFP package and this R Markdown document.
 
@@ -96,7 +96,7 @@ Tbl2 <- gvisTable (Table2friendly,formats= list ('Latitude'='#.###', 'Longitude'
 plot(Tbl2)
 ```
 
-Aboveground biomass change was estimated as the difference in AGB between the first and last census, divided by the time elapsed (Figure 3). In Figure 3 the rate of biomass change over time is indicated by colour, and the size of the marker represents the AGB weighted mean.
+<br>Aboveground biomass change was estimated as the difference in AGB between the first and last census, divided by the time elapsed (Figure 3). In Figure 3 the rate of biomass change over time is indicated by colour, and the size of the marker represents the AGB weighted mean.</br>
 
 **Figure 3.** Map of the rate of change of aboveground biomass (Mg/ha per year)
 
